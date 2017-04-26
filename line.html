@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas元素示例</title>
+</head>
+<script>	
+
+// 复杂图形
+/*   function draw(id)
+   {
+      var canvas=document.getElementById(id);
+      if(canvas==null)
+         return false;
+      var context = canvas.getContext('2d');
+      context.fillStyle = "#eeeeef";
+      context.fillRect(0,0,400,300);
+      var n=0;
+      var dx=150;
+      var dy=150;
+      var s=100;
+      context.beginPath();
+      context.fillStyle = 'rgb(100,255,100)';
+      context.strokeStyle = 'rgb(0,0,100)';
+      var x = Math.sin(0);
+      var y = Math.cos(0);
+      var dig = Math.PI/15*11;
+      for(var i=0;i<30;i++)
+      {
+         var x = Math.sin(i*dig);
+         var y = Math.cos(i*dig);
+         context.lineTo(dx + x*s,dy + y*s);
+      }
+      context.closePath();
+      context.fill();
+      context.stroke();      
+   }*/
+
+
+   // 直线
+
+ /*  function draw(id)
+   {
+      var canvas = document.getElementById(id);
+      if(canvas == null)
+         return false;
+      var context = canvas.getContext('2d');
+      context.fillStyle = "#eeeeef";
+      context.beginPath();
+      context.lineWidth = 10;
+      context.lineCap="round";
+      //lineCap属性为直线添加线帽 butt直线不添加线帽。round直线添加圆形线帽。square直线添加正方形线帽
+      context.moveTo(20,20);
+      context.lineTo(20,200);
+      context.stroke();
+
+   }*/
+
+
+
+   // 两条相交直线拐角
+   
+/*   function draw(id)
+   {
+      var canvas = document.getElementById(id);
+      if(canvas == null)
+         return false;
+      var context = canvas.getContext('2d');
+      context.beginPath();
+      context.lineWidth=10;
+      context.lineJoin="bevel";
+      //lineJoin属性指定两个直线交汇时的拐角形状， miter(尖角拐角),round(圆角),bevel(斜角)
+      context.moveTo(10,20);
+      context.lineTo(50,50);
+      context.lineTo(50,80);
+      context.stroke();
+      context.closePath();
+
+   }*/
+
+   // 虚线
+  function draw(id)
+  {
+   var canvas=document.getElementById(id);
+   if(canvas == null)
+      return false;
+   var context = canvas.getContext('2d');
+   context.beginPath();
+   context.lineWidth=5;
+   context.setLineDash([5,10,15,20]);
+   // 第奇数个数值代表线段长度，第偶数个数值代表线段与线段之间的距离
+   // setLineDash是一个数值,线段长度和线段与线段之间的距离都等于该值。两个值，第一个是线段长度，第二个是线段与线段之间的距离。数值数量超过2,数量应该偶数
+   // [5,10,15,20]虚线长度轮流为5,15.线段与线段之间的距离轮流为10,20
+   // [5,10,15]运行后浏览器会自动复制数组中的数值,使数组中的内容为[5,10,15,5,10,15],绘制的虚线线段长度轮流为5、15、10，线段距离是10、5、15
+   context.moveTo(10,20);
+   context.lineTo(300,20);
+   context.stroke();
+  }
+
+
+
+</script>
+<body onload="draw('canvas');" >
+  <h1>canvas元素示例直线</h1>
+  <canvas id="canvas" width="800" height="800" />
+</body>
+
+</html>
+

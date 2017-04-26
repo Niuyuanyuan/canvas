@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas元素示例</title>
+</head>
+<script>	
+   function draw(id)
+   {
+      var canvas = document.getElementById(id);
+      if(canvas==null)
+         return false;
+      var context = canvas.getContext('2d');
+      context.fillStyle = "#EEEEEF";
+      context.fillRect(0,0,600,600);
+      var n = 0;
+      for(var i=0;i<10;i++)
+      {
+         context.beginPath();
+
+         // 圆里面的参数(圆形企点横坐标，纵坐标，半径，开始角度，结束角度，是否逆时针)
+          context.arc(i*25,i*25,i*10,0,Math.PI*2,true);
+
+         //绘制椭圆ellipse(起点横坐标，纵坐标，横向半径，纵向半径，顺时针旋转角度，开始角度，结束角度，是否逆时针绘制)
+         // context.ellipse(i*25,i*25,i*10,i*20,30,0,Math.PI*2,true);
+
+         context.closePath();
+
+         context.fillStyle = 'rgba(255,0,0,0.25)';
+
+         // 因为路径已经决定图形的大小，所以不需要在该方法中使用参数来指定图形大小
+         context.fill();
+      }
+
+
+   }
+</script>
+<body onload="draw('canvas');">
+	<h1>canvas元素示例</h1>
+	<canvas id="canvas" width="800" height="800"></canvas>
+</body>
+
+</html>
